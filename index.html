@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<!-- <link href="asset/common.css?ver=1.0" type="text/css" rel="stylesheet" /> -->
+<script src="script/jquery.js?ver=1.0" type="text/javascript"></script>
+<script src="script/jquery.tools.js?ver=1.0" type="text/javascript"></script>
+<script src="script/js.mouse.gesture.js?ver=1.0" type="text/javascript"></script>
+</head>
+<body>
+<div id="test_div">Test mouse gesture, left click your mouse and hold it</div>
+</body>
+<script type="text/javascript">
+js.mouse.gesture.init({
+    showTrail: true,
+    didStartCapture: function(x, y) {
+        document.getElementById('test_div').innerHTML = 'Tracking...';
+    },
+    didCaptureGesture: function(compasses) {
+        var t=[],i;
+        for (i in compasses) {
+            t.push(compasses[i].d);
+        }
+        document.getElementById('test_div').innerHTML = t.join(", ");
+    }
+});
+</script>
+</html>
